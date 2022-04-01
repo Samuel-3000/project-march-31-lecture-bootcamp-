@@ -1,0 +1,51 @@
+<form [formGroup]="studentForm">
+
+    <p>
+        <label>Name</label>
+        <input type="text" formControlName="name">
+        <!-- {{ studentForm.get('name')?.valid }} -->
+
+        <span *ngIf="nameFormControl.touched && studentForm.get('name')!.errors?.['required']">
+            The name field is required. 
+        </span>
+
+        <span *ngIf="nameFormControl.dirty && studentForm.get('name')!.errors?.['minlength']">
+            Your name must be at least 3 letters.  
+        </span>
+
+        
+
+
+    </p>
+
+    <p>
+        <label>Email</label>
+        <input type="email" formControlName="email">
+    </p>
+    
+    <p>
+        <label>Age</label>
+        
+        <input type="number" formControlName="age">
+    </p>
+    
+
+    <p>
+        <label>Password</label>
+        
+        <input type="password" formControlName="password">
+    </p>
+
+    <p>
+        <label>Gender</label>
+        
+        <select formControlName="gender">
+            <option value="'male">Male</option>
+            <option value="'female">Female</option>
+            <option value="'x">x</option>
+        </select> 
+    </p>
+    <button type="button" (click)="onSubmit()" [disabled]="studentForm.invalid">Submit</button>
+
+
+</form>
